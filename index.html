@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
 </head>
 <body>
+    <form id="bookForm">
+        <label for="title"><b>Title</b></label>
+        <input type="text" name="title" value="title" required><br>
+        <label for="author"><b>Author</b></label>
+        <input type="text" name="author" value="author" requiered><br>
+        <label for="pages"><b>Pages</b></label>
+        <input type="text" name="pages" value="pages" required><br>
+        <label for="read"><b>Read</b></label>
+        <select name="read" id="">
+            <option value="Read">Read</option>
+            <option value="Not Read">Not Read</option>
+        </select>
+        <button type="submit" id="addNewBookButton">Add</button>
+        <button type="submit" class="btn cancel" onclick="closeForm()">Cancel</button>
+
+    </form>
+    <button id="openForm" onclick="openForm()">add book</button>
+
+    <table id="bookTable">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Read</th>
+        </tr>
+    </table>
     
+
+    <script src="js/script.js"></script>
 </body>
 </html>
