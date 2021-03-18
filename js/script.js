@@ -2,8 +2,24 @@
 let myLibrary = [];
 
 //adding test Book
+/*
 let sampleBook = new Book("agot", "grrm", "900", "Read");
 myLibrary.push(sampleBook);
+localStorage["library"] = JSON.stringify(myLibrary);
+*/
+
+let parseArrayIntoBooks = storagedBooks => {
+    storagedBooks.forEach(storagedBook => {
+        let book = new Book(storagedBook.title, storagedBook.author, storagedBook.numberOfPages, storagedBook.readStatus);
+        myLibrary.push(book)
+    })
+}
+
+if (localStorage.getItem('library')) {
+    let storagedBooks = JSON.parse(localStorage["library"]);
+    parseArrayIntoBooks(storagedBooks);
+}
+
 updateList();
 
 function Book(title, author, numberOfPages, readStatus) {
@@ -38,15 +54,13 @@ Book.prototype.toggleStatus = function() {
 
 //DOM interaction
 let deleteBookk = event => {
-    console.log("working");
     let bookId = event.id;
     myLibrary.forEach(book => {
-        console.log(book.id);
         if (book.id == bookId) {
-            console.log("found");
             myLibrary.splice(myLibrary.indexOf(book), 1);
         }
     })
+    localStorage["library"] = JSON.stringify(myLibrary);
     updateList();
 }
 
@@ -74,6 +88,7 @@ form.addEventListener("submit", function (event) {
     let book = new Book(title.value, author.value, pages.value, read.value);
     myLibrary.push(book);
     updateList();
+    localStorage["library"] = JSON.stringify(myLibrary);
 });
 
 
@@ -86,13 +101,13 @@ document.body.addEventListener( 'click', function ( event ) {
       let row = event.target.parentElement.parentElement;
       let bookId = row.getElementsByClassName("deleteBook")[0].id;
 
-      console.log(bookId);
       myLibrary.forEach(book => {
           if (book.id == bookId) {
               book.toggleStatus();
           }
       })
       updateList();
+      localStorage["library"] = JSON.stringify(myLibrary);
   }
 } );
 
@@ -110,4 +125,3 @@ function openForm() {
 function closeForm() {
   document.getElementById("bookForm").style.display = "none";
 }
-
