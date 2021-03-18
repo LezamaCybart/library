@@ -16,6 +16,6 @@ like local storage and a little of OOP.
 
 ## TODO
 -Besides for the minimum needed to make the form a popup form, the app lacks any style, The Odin Project curriculum has a whole html and css chapter,
-so I'll wait until I get there and learn something, so I can come back and make the app prettier, for now I'm only focusing on the JavaScript side of things.
+so I'll wait until I get there and learn something, so I can come back and make the app prettier, for now I'm only focusing on the JavaScript side of things.  
 -I could have used Firebase or other service for storage, but then again, the curriculum has a BaaS chapter. I'll come back and implement all the new things
 that I learn along the way.
