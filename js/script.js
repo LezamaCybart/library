@@ -13,7 +13,6 @@ function Book(title, author, numberOfPages, readStatus) {
     this.author = author
     this.numberOfPages = numberOfPages
     this.readStatus = readStatus
-
 }
 
 Object.defineProperty(Book.prototype, 'status',  {
@@ -97,4 +96,18 @@ document.body.addEventListener( 'click', function ( event ) {
   }
 } );
 
+//popup form functionts
+const openFormButton = document.getElementById("openForm");
+openFormButton.addEventListener("click", openForm);
+
+const closeFormButton = document.getElementById("closeForm");
+closeFormButton.addEventListener("click", closeForm);
+
+function openForm() {
+  document.getElementById("bookForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("bookForm").style.display = "none";
+}
 
