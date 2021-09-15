@@ -1,9 +1,33 @@
 // functionality
 let myLibrary = [];
 
-//adding test Book
+class Book {
+    constructor(title, author, numberOfPages, readStatus) { 
+        this.title = title
+        this.author = author
+        this.numberOfPages = numberOfPages
+        this.readStatus = readStatus
+    }
+
+    get status() {return this.readStatus};
+
+    set status(status) {this.readStatus = status};
+
+
+    toggleStatus () {
+        console.log(this.status);
+        if (this.status == "Read") {
+            this.status = "Not Read";
+        } else {
+            this.status = "Read";
+        }
+    }
+
+}
+
 /*
-let sampleBook = new Book("agot", "grrm", "900", "Read");
+//adding test Book
+let sampleBook = new Book("agott", "grrm", "900", "Read");
 myLibrary.push(sampleBook);
 localStorage["library"] = JSON.stringify(myLibrary);
 */
@@ -22,13 +46,11 @@ if (localStorage.getItem('library')) {
 
 updateList();
 
+
+/*
 function Book(title, author, numberOfPages, readStatus) {
     // the constructor...
     // author, title, number of pages, read status.
-    this.title = title
-    this.author = author
-    this.numberOfPages = numberOfPages
-    this.readStatus = readStatus
 }
 
 Object.defineProperty(Book.prototype, 'status',  {
@@ -49,6 +71,7 @@ Book.prototype.toggleStatus = function() {
         this.status = "Read";
     }
 }
+*/
 
 
 
@@ -103,6 +126,7 @@ document.body.addEventListener( 'click', function ( event ) {
 
       myLibrary.forEach(book => {
           if (book.id == bookId) {
+              console.log(book);
               book.toggleStatus();
           }
       })
@@ -117,6 +141,9 @@ openFormButton.addEventListener("click", openForm);
 
 const closeFormButton = document.getElementById("closeForm");
 closeFormButton.addEventListener("click", closeForm);
+
+const addNewBookButton = document.getElementById("addNewBookButton");
+addNewBookButton.addEventListener("click", closeForm);
 
 function openForm() {
   document.getElementById("bookForm").style.display = "block";
